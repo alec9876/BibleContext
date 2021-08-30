@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BibleContext.Views.OTLegendPage"
+             xmlns:vm="clr-namespace:BibleContext.ViewModels"
+             BackgroundColor="Black"
+             Shell.NavBarIsVisible="False"
+             Shell.PresentationMode="ModalAnimated">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:OTLegendVM x:Key="vm" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <Grid RowSpacing="38">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Frame BackgroundColor="SlateGray"
+                   HorizontalOptions="FillAndExpand"
+                   HeightRequest="30"
+                   Grid.Row="0"
+                   Grid.ColumnSpan="2">
+                <Label Text="Old Testament Legend" 
+                       TextColor="White"
+                       FontSize="Large"
+                       HorizontalOptions="CenterAndExpand"/>
+            </Frame>
+            
+            <Frame BackgroundColor="Orange"
+                   HorizontalOptions="CenterAndExpand"
+                   HeightRequest="30"
+                   WidthRequest="50"
+                   Grid.Row="1"
+                   Grid.Column="0">
+                <Label Text="Orange"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"/>
+            </Frame>
+            <Label Text="is Law" 
+                   TextColor="White"
+                   FontSize="Medium"
+                   VerticalTextAlignment="Center"
+                   Grid.Row="1"
+                   Grid.Column="1"/>
+
+            <Frame BackgroundColor="Purple"
+                   HorizontalOptions="Center"
+                   HeightRequest="30"
+                   WidthRequest="50"
+                   Grid.Row="2"
+                   Grid.Column="0">
+                <Label Text="Purple"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"/>
+            </Frame>
+            <Label Text="is Narrative" 
+                   TextColor="White"
+                   FontSize="Medium"
+                   VerticalTextAlignment="Center"
+                   Grid.Row="2"
+                   Grid.Column="1"/>
+
+            <Frame BackgroundColor="Maroon"
+                   HorizontalOptions="CenterAndExpand"
+                   HeightRequest="30"
+                   WidthRequest="50"
+                   Grid.Row="3"
+                   Grid.Column="0">
+                <Label Text="Red"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"/>
+            </Frame>
+            <Label Text="is Poetic" 
+                   TextColor="White"
+                   FontSize="Medium"
+                   VerticalTextAlignment="Center"
+                   Grid.Row="3"
+                   Grid.Column="1"/>
+
+            <Frame BackgroundColor="DarkBlue"
+                   HorizontalOptions="CenterAndExpand"
+                   HeightRequest="30"
+                   WidthRequest="50"
+                   Grid.Row="4"
+                   Grid.Column="0">
+                <Label Text="Blue"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"/>
+            </Frame>
+            <Label Text="is Prophetic" 
+                   TextColor="White"
+                   FontSize="Medium"
+                   VerticalTextAlignment="Center"
+                   Grid.Row="4"
+                   Grid.Column="1"/>
+
+            <Frame BackgroundColor="DarkGreen"
+                   HorizontalOptions="CenterAndExpand"
+                   HeightRequest="30"
+                   WidthRequest="50"
+                   Grid.Row="5"
+                   Grid.Column="0">
+                <Label Text="Green"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"/>
+            </Frame>
+            <Label Text="is Wisdom literature" 
+                   TextColor="White"
+                   FontSize="Medium"
+                   VerticalTextAlignment="Center"
+                   Grid.Row="5"
+                   Grid.Column="1"/>
+            
+            <Button Text="Close" 
+                    TextColor="ForestGreen"
+                    BackgroundColor="Black"
+                    BorderColor="ForestGreen"
+                    WidthRequest="250"
+                    CornerRadius="20"
+                    BorderWidth="5"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Grid.Row="6"
+                    Grid.ColumnSpan="2"
+                    Command="{Binding Source={StaticResource vm}, Path=BackNavigationCommand}" />
+        </Grid>
+    </StackLayout>
+</ContentPage>

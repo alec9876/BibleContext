@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BibleContext.ViewModels"
+             x:Class="BibleContext.Views.SectionChapterPage"
+             BackgroundColor="Black">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding Source={StaticResource vm}, Path=BackNavigationCommand}" />
+    </Shell.BackButtonBehavior>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:SectionChapterVM x:Key="vm"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <StackLayout BindingContext="{StaticResource vm}" >
+        <Grid Margin="30" RowSpacing="70" BackgroundColor="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label TextColor="White"
+               FontSize="50"
+               Text="{Binding BookTitle}"
+               HorizontalTextAlignment="Center">
+            </Label>
+            <Frame BackgroundColor="SlateGray" 
+                   BorderColor="WhiteSmoke"
+                   HeightRequest="100" 
+                   WidthRequest="100" 
+                   Grid.Row="1" 
+                   VerticalOptions="Center">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={StaticResource vm}, Path=SectionsNavCommand}"
+                                      NumberOfTapsRequired="1" />
+                </Frame.GestureRecognizers>
+                <Label Text="By Sections" 
+                       FontSize="Large" 
+                       FontAttributes="Bold" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" 
+                       TextColor="White"/>
+            </Frame>
+            <Frame BackgroundColor="SlateGray"
+                   BorderColor="WhiteSmoke"
+                   HeightRequest="100" 
+                   WidthRequest="100" 
+                   Grid.Row="2" 
+                   VerticalOptions="Center">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={StaticResource vm}, Path=ChaptersNavCommand}"
+                                      NumberOfTapsRequired="1" />
+                </Frame.GestureRecognizers>
+                <Label Text="By Chapters" 
+                       FontSize="Large" 
+                       FontAttributes="Bold" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" 
+                       TextColor="White"/>
+            </Frame>
+        </Grid>
+    </StackLayout>
+   
+</ContentPage>

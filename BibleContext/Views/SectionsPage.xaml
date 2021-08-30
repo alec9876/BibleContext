@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BibleContext.Views.SectionsPage"
+             xmlns:fa="clr-namespace:FontAwesome"
+             xmlns:vm="clr-namespace:BibleContext.ViewModels" 
+             BackgroundColor="Black"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:SectionVM x:Key="vm" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout BindingContext="{StaticResource vm}">
+        <Grid Margin="0,0,0,-6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <Frame BackgroundColor="SlateGray">
+                <Image HorizontalOptions="Start">
+                    <Image.Source>
+                        <FontImageSource FontFamily="FAS"
+                                             Color="White"
+                                             Glyph="{x:Static fa:FontAwesomeIcons.ArrowLeft}"/>
+                    </Image.Source>
+                </Image>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={StaticResource vm}, Path=BackNavigationCommand}"
+                                              CommandParameter="{Binding .}"
+                                              NumberOfTapsRequired="1" />
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Label TextColor="White"
+                   FontSize="20"
+                   Text="{Binding BookTitle, StringFormat=' Sections of {0:N}'}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Grid>
+        <Button Command="{Binding Source={StaticResource vm}, Path=LegendNavigationCommand}"
+                Text="Color Legend"
+                TextColor="ForestGreen"
+                HorizontalOptions="Center"
+                BorderColor="ForestGreen"
+                BorderWidth="5"
+                CornerRadius="12"
+                BackgroundColor="Black"
+                Margin="0,5,0,0"/>
+        <CollectionView BindingContext="{StaticResource vm}"
+                    ItemsSource="{Binding Sections}"
+                    SelectedItem="{Binding Verse}"
+                    SelectionMode="Single"
+                    ItemsLayout="VerticalGrid, 2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="160" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame BackgroundColor="{Binding BackgroundColor}"
+                               BorderColor="Black">
+                            <!--<Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={StaticResource vm}, Path=VersesNavigationCommand}"
+                                                      CommandParameter="{Binding Verses}"
+                                                      NumberOfTapsRequired="1" />
+                            </Frame.GestureRecognizers>-->
+                            <StackLayout>
+                                <Label Text="{Binding Title}" 
+                                       FontSize="Medium"
+                                       TextColor="White"
+                                       VerticalTextAlignment="Start"
+                                       HorizontalTextAlignment="Center" />
+                                <Label Text="{Binding Verses}" 
+                                       FontSize="Small"
+                                       TextColor="White"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="EndAndExpand"
+                                       HorizontalTextAlignment="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

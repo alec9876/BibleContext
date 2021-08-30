@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "887947274747",
+    "project_id": "biblecontext-18aff",
+    "storage_bucket": "biblecontext-18aff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887947274747:android:9fbafa579f651cf7d6835e",
+        "android_client_info": {
+          "package_name": "com.companyname.biblecontext"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "887947274747-1t0iqks4htfe4hgke5pr7q5812dqpk21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE0FawvGaIM7GtVqJ5M8mMlQl2cJBL6TI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "887947274747-1t0iqks4htfe4hgke5pr7q5812dqpk21.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "887947274747-t5g8upbr5803tqo72qt9usj7ei68s1tg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.companyname.BibleContext"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

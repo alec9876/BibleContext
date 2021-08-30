@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Gud4lSDvByWoyveS+8gqb/Klapc28xcn043VysGk7EeYFf5806dO+aOUhyceBWcEVoy6M9q44kCNOLuORbjEUg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Alec Schram\\source\\repos\\BibleContext\\BibleContext.iOS\\BibleContext.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Alec Schram\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"
+  ],
+  "logs": []
+}

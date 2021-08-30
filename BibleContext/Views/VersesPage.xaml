@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:BibleContext.ViewModels"
+             x:Class="BibleContext.Views.VersesPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:VersesVM x:Key="vm" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <CollectionView BindingContext="{StaticResource vm }"
+                  ItemsSource="{Binding Passage}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.9*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.8*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame BackgroundColor="Black"
+                           BorderColor="Black">
+                        <Label Text="{Binding}" 
+                               FontSize="Medium"
+                               TextColor="White"
+                               FontAttributes="Bold" 
+                               HorizontalTextAlignment="Center" 
+                               VerticalTextAlignment="Center"/>
+                    </Frame>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

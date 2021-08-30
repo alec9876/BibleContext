@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BibleContext.Views.IntroPage"
+             BackgroundColor="Black">
+
+    <Shell.TitleView>
+        <Label Text="Bible In Context" 
+               TextColor="WhiteSmoke"
+               FontAttributes="Bold"
+               VerticalTextAlignment="Center"
+               HorizontalOptions="Center"
+               FontSize="Medium"/>
+    </Shell.TitleView>
+
+    <StackLayout>
+        <Grid Margin="30" RowSpacing="70" BackgroundColor="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label TextColor="White"
+                   FontSize="50"
+                   Text="Memorize By"
+                   FontAttributes="Bold"
+                   Grid.Row="0"
+                   HorizontalTextAlignment="Center">
+            </Label>
+            <Frame BackgroundColor="SlateGray" 
+                   BorderColor="WhiteSmoke"
+                   HeightRequest="100" 
+                   WidthRequest="100" 
+                   Grid.Row="1">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Bible_Tapped"
+                                          NumberOfTapsRequired="1" />
+                </Frame.GestureRecognizers>
+                <Label Text="The Bible" 
+                       TextColor="WhiteSmoke"
+                       FontSize="35" 
+                       FontAttributes="Bold" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" />
+            </Frame>
+            <Frame BackgroundColor="SlateGray" 
+                   BorderColor="WhiteSmoke"
+                   HeightRequest="100" 
+                   WidthRequest="100" 
+                   Grid.Row="2" >
+                <Label Text="Doctrine" 
+                   FontSize="35" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center" 
+                   TextColor="WhiteSmoke"/>
+            </Frame>
+        </Grid>
+        <!--<Button Clicked="Data_Clicked"
+                Text="Button"
+                TextColor="Black"/>-->
+    </StackLayout>
+</ContentPage>
