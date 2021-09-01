@@ -23,14 +23,15 @@ namespace BibleContext.Models
 
             using (HttpClient client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Authorization 
+                client.DefaultRequestHeaders.Authorization
                     = new AuthenticationHeaderValue("Token", header);
-
+                 
                 var response = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
 
+                //await Task.Delay(5000);
                 if (response.IsSuccessStatusCode)
                 {
-                    var json = await response.Content.ReadAsStringAsync();
+                var json = await response.Content.ReadAsStringAsync();
                     var verseRoot = JsonConvert.DeserializeObject<Root>(json);
                     Console.WriteLine(verseRoot);
                     scripture = verseRoot;
