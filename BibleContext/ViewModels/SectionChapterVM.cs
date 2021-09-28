@@ -18,6 +18,8 @@ namespace BibleContext.ViewModels
         public Command DoctrineNavCommand { get; set; }
         public Command BackNavigationCommand { get; set; }
         public OldTestBooks SelectedBook { get; set; }
+        public NewTestBooks SelectedBookNT { get; set; }
+
         private string _bookTitle { get; set; }
         public string BookTitle
         {
@@ -52,7 +54,14 @@ namespace BibleContext.ViewModels
 
         private async void Section()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new SectionsPage(SelectedBook));
+            if(SelectedBook != null)
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new SectionsPage(SelectedBook));
+            }
+            else
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new OutlinePage(SelectedBookNT));
+            }
         }
 
         private async void Chapters()

@@ -12,13 +12,13 @@
             <vm:SectionVM x:Key="vm" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <StackLayout BindingContext="{StaticResource vm}">
         <Grid Margin="0,0,0,-6">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
-            <Frame BackgroundColor="SlateGray">
+            <Frame BackgroundColor="#222426">
                 <Image HorizontalOptions="Start">
                     <Image.Source>
                         <FontImageSource FontFamily="FAS"
@@ -39,19 +39,43 @@
                    VerticalOptions="Center"/>
         </Grid>
         <Button Command="{Binding Source={StaticResource vm}, Path=LegendNavigationCommand}"
-                Text="Color Legend"
-                TextColor="ForestGreen"
-                HorizontalOptions="Center"
-                BorderColor="ForestGreen"
-                BorderWidth="5"
-                CornerRadius="12"
-                BackgroundColor="Black"
-                Margin="0,5,0,0"/>
+            Text="Color Legend"
+            TextColor="ForestGreen"
+            BorderColor="ForestGreen"
+            BorderWidth="5"
+            CornerRadius="12"
+            BackgroundColor="Black"
+            Margin="0,5,0,0"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <RadioButton x:Name="passage"
+                         Content="Passage"
+                         IsChecked="True"
+                         BorderColor="WhiteSmoke"
+                         BackgroundColor="Black"
+                         TextColor="WhiteSmoke"
+                         BorderWidth="3"
+                         CornerRadius="12"
+                         Padding="10,5,0,0"
+                         GroupName="toggle" 
+                         Margin="0,5,0,0"/>
+            <RadioButton x:Name="summary"
+                         Content="Summary"
+                         IsChecked="False"
+                         BorderColor="WhiteSmoke"
+                         BackgroundColor="Black"
+                         TextColor="WhiteSmoke"
+                         BorderWidth="3"
+                         CornerRadius="12"
+                         Padding="10,5,0,0"
+                         GroupName="toggle" 
+                         Margin="0,5,0,0"/>
+        </StackLayout>
         <CollectionView BindingContext="{StaticResource vm}"
-                    ItemsSource="{Binding Sections}"
-                    SelectedItem="{Binding Verse}"
-                    SelectionMode="Single"
-                    ItemsLayout="VerticalGrid, 2">
+                        ItemsSource="{Binding Sections}"
+                        SelectedItem="{Binding Verse}"
+                        IsVisible="{Binding IsVisible}"
+                        SelectionMode="Single"
+                        ItemsLayout="VerticalGrid, 2">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0">
@@ -63,11 +87,6 @@
                         </Grid.ColumnDefinitions>
                         <Frame BackgroundColor="{Binding BackgroundColor}"
                                BorderColor="Black">
-                            <!--<Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={StaticResource vm}, Path=VersesNavigationCommand}"
-                                                      CommandParameter="{Binding Verses}"
-                                                      NumberOfTapsRequired="1" />
-                            </Frame.GestureRecognizers>-->
                             <StackLayout>
                                 <Label Text="{Binding Title}" 
                                        FontSize="Medium"

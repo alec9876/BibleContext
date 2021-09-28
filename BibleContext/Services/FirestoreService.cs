@@ -9,9 +9,12 @@ namespace BibleContext.Services
 {
     public interface IFirestore
     {
-        Task<List<OldTestBooks>> Read();
+        Task<List<OldTestBooks>> ReadOT();
+        Task<List<NewTestBooks>> ReadNT();
         Task<OldTestBooks> GetBook(string id);
-        Task<List<Section>> GetSections(string id);
+        Task<List<Section>> GetSectionsOT(string id);
+        Task<List<Section>> GetSectionsNT(string id);
+        Task<List<SubSection>> GetSubSectionsNT(string bookId, string sectionId);
         Task<List<Chapters>> GetChapters(string id);
         bool Insert();
 
@@ -22,23 +25,33 @@ namespace BibleContext.Services
     {
         private static IFirestore firestore = DependencyService.Get<IFirestore>();
 
-        public static async Task<List<OldTestBooks>> Read()
+        public static async Task<List<OldTestBooks>> ReadOT()
         {
-            return await firestore.Read();
+            return await firestore.ReadOT();
         }
 
-        public static async Task<OldTestBooks> GetBook(string id)
+        public static async Task<List<NewTestBooks>> ReadNT()
         {
-            return await firestore.GetBook(id);
+            return await firestore.ReadNT();
         }
 
-        public static async Task<List<Section>> GetSections(string id)
+        public static async Task<List<Section>> GetSectionsOT(string id)
         {
-            return await firestore.GetSections(id);
+            return await firestore.GetSectionsOT(id);
+        }
+
+        public static async Task<List<Section>> GetSectionsNT(string id)
+        {
+            return await firestore.GetSectionsNT(id);
         }
         public static async Task<List<Chapters>> GetChapters(string id)
         {
             return await firestore.GetChapters(id);
+        }
+
+        public static async Task<List<SubSection>> GetSubSectionsNT(string bookId, string sectionId)
+        {
+            return await firestore.GetSubSectionsNT(bookId, sectionId);
         }
 
         public static bool Insert()

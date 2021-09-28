@@ -27,7 +27,7 @@
                Text="{Binding BookTitle}"
                HorizontalTextAlignment="Center">
             </Label>
-            <Frame BackgroundColor="SlateGray" 
+            <Frame BackgroundColor="#222426" 
                    BorderColor="WhiteSmoke"
                    HeightRequest="100" 
                    WidthRequest="100" 
@@ -42,9 +42,9 @@
                        FontAttributes="Bold" 
                        HorizontalTextAlignment="Center" 
                        VerticalTextAlignment="Center" 
-                       TextColor="White"/>
+                       TextColor="WhiteSmoke"/>
             </Frame>
-            <Frame BackgroundColor="SlateGray"
+            <Frame BackgroundColor="#222426"
                    BorderColor="WhiteSmoke"
                    HeightRequest="100" 
                    WidthRequest="100" 
@@ -59,7 +59,7 @@
                        FontAttributes="Bold" 
                        HorizontalTextAlignment="Center" 
                        VerticalTextAlignment="Center" 
-                       TextColor="White"/>
+                       TextColor="WhiteSmoke"/>
             </Frame>
         </Grid>
     </StackLayout>

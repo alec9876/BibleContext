@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GmEDhV0Vhf4MmjLvD9vuQWgM4kL3wHHZudIh7AQ+SYMVDHxd4VAf5IvDFcM2s1BKSA7kg8iBnMo6YsYqScy5GQ==",
+  "dgSpecHash": "HNmjZGxWVAIqzGvWnH/ZKmy7IwEezTMvYvqU3MZh8E1RkFtPul9/YBqEbY3VXdNOjez4OIQx1C5AlOK1mqJwoQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Alec Schram\\source\\repos\\BibleContext\\BibleContext.Android\\BibleContext.Android.csproj",
   "expectedPackageFiles": [
@@ -81,6 +81,7 @@
     "C:\\Users\\Alec Schram\\.nuget\\packages\\xamarin.androidx.viewpager\\1.0.0.7\\xamarin.androidx.viewpager.1.0.0.7.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.androidx.viewpager2\\1.0.0.8\\xamarin.androidx.viewpager2.1.0.0.8.nupkg.sha512",
     "C:\\Users\\Alec Schram\\.nuget\\packages\\xamarin.build.download\\0.10.0\\xamarin.build.download.0.10.0.nupkg.sha512",
+    "C:\\Users\\Alec Schram\\.nuget\\packages\\xamarin.communitytoolkit\\1.2.0\\xamarin.communitytoolkit.1.2.0.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
     "C:\\Users\\Alec Schram\\.nuget\\packages\\xamarin.firebase.annotations\\116.0.0\\xamarin.firebase.annotations.116.0.0.nupkg.sha512",
     "C:\\Users\\Alec Schram\\.nuget\\packages\\xamarin.firebase.auth\\121.0.1.1\\xamarin.firebase.auth.121.0.1.1.nupkg.sha512",

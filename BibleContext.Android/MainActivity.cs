@@ -15,6 +15,8 @@ namespace BibleContext.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            Android.Webkit.WebStorage.Instance.DeleteAllData();
+
             Window.SetStatusBarColor(Color.Black.ToAndroid());
 
             base.OnCreate(savedInstanceState);

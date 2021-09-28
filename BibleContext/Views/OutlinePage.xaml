@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BibleContext.ViewModels"
+             x:Class="BibleContext.Views.OutlinePage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:fa="clr-namespace:FontAwesome"
+             BackgroundColor="Black"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:OutlineVM x:Key="vm" />
+            <xct:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout BindingContext="{StaticResource vm}">
+        <Grid Margin="0,0,0,-6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <Frame BackgroundColor="#222426">
+                <Image HorizontalOptions="Start">
+                    <Image.Source>
+                        <FontImageSource FontFamily="FAS"
+                                         Color="White"
+                                         Glyph="{x:Static fa:FontAwesomeIcons.ArrowLeft}"/>
+                    </Image.Source>
+                </Image>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={StaticResource vm}, Path=BackNavigationCommand}"
+                                          CommandParameter="{Binding .}"
+                                          NumberOfTapsRequired="1" />
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Label TextColor="White"
+                   FontSize="20"
+                   Text="{Binding BookTitle, StringFormat=' Sections of {0:N}'}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Grid>
+        <Button Command="{Binding Source={StaticResource vm}, Path=LegendNavigationCommand}"
+            Text="Color Legend"
+            TextColor="ForestGreen"
+            BorderColor="ForestGreen"
+            BorderWidth="5"
+            CornerRadius="12"
+            BackgroundColor="Black"
+            Margin="0,5,0,0"/>
+
+        <StackLayout>
+            <Grid ColumnSpacing="-70">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="170" />
+                </Grid.ColumnDefinitions>
+                <CollectionView BindingContext="{StaticResource vm}"
+                                ItemsSource="{Binding Sections}"
+                                SelectionMode="Single"
+                                Grid.Column="0"
+                                x:Name="slideFrame">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,0,0,15">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="150" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="170" />
+                                    <ColumnDefinition Width="20" />
+                                </Grid.ColumnDefinitions>
+                                <Frame BackgroundColor="Black"
+                                       Grid.Column="0">
+                                    <StackLayout>
+                                        <Label Text="{Binding Order}"
+                                               TextColor="White"
+                                               FontSize="Header"/>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame BackgroundColor="{Binding BackgroundColor}"
+                                       BorderColor="Black"
+                                       Grid.Column="1"
+                               >
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Slide_Tapped"
+                                                      Command="{Binding Source={StaticResource vm}, Path=SubSectionNaviationCommand}"
+                                                      CommandParameter="{Binding .}"
+                                                      NumberOfTapsRequired="1"/>
+                                    </Frame.GestureRecognizers>
+                                    <StackLayout>
+                                        <Label Text="{Binding Title}" 
+                                       FontSize="Medium"
+                                       TextColor="White"
+                                       VerticalTextAlignment="Start"
+                                       HorizontalTextAlignment="Center" />
+                                        <Label Text="{Binding Verses}" 
+                                       FontSize="Small"
+                                       TextColor="White"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="EndAndExpand"
+                                       HorizontalTextAlignment="Center" />
+                                    </StackLayout>
+                                </Frame>
+                                <ListView ItemsSource="{Binding Count}"
+                                          Grid.Column="2">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout>
+                                                    <BoxView Color="{Binding SubColor}"
+                                                             CornerRadius="0"
+                                                             WidthRequest="10"
+                                                             HeightRequest="10"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <StackLayout IsVisible="{Binding isVisible}"
+                             BindingContext="{StaticResource vm}"
+                             BindableLayout.ItemsSource="{Binding SubSections}"
+                             Grid.Column="1">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="{Binding BackgroundColor}"
+                                   BorderColor="Black"
+                               WidthRequest="100"
+                               HorizontalOptions="End"
+                               VerticalOptions="Start">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding Source={StaticResource vm}, Path=VersesNavigationCommand}"
+                                                      CommandParameter="{Binding .}"
+                                                      NumberOfTapsRequired="1"/>
+                                </Frame.GestureRecognizers>
+                                <StackLayout>
+                                    <Label Text="{Binding Title}" 
+                                           FontSize="Medium"
+                                           TextColor="White"
+                                           VerticalTextAlignment="Start"
+                                           HorizontalTextAlignment="Center" />
+                                    <Label Text="{Binding Verses}" 
+                                           FontSize="Small"
+                                           TextColor="White"
+                                           FontAttributes="Bold"
+                                           VerticalOptions="EndAndExpand"
+                                           HorizontalTextAlignment="Center" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

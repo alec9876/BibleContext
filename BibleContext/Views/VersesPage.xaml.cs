@@ -17,12 +17,12 @@ namespace BibleContext.Views
         public string BookName { get; set; }
         public string Verses { get; set; }
         public VersesVM vm;
-        public VersesPage(string book, Section section)
+        public VersesPage(string book, string verse)
         {
             InitializeComponent();
 
             BookName = book;
-            Verses = section.Verses;
+            Verses = verse;
 
             vm = Resources["vm"] as VersesVM;
         }

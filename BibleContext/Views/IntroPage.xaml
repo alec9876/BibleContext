@@ -20,14 +20,14 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label TextColor="White"
+            <Label TextColor="WhiteSmoke"
                    FontSize="50"
                    Text="Memorize By"
                    FontAttributes="Bold"
                    Grid.Row="0"
                    HorizontalTextAlignment="Center">
             </Label>
-            <Frame BackgroundColor="SlateGray" 
+            <Frame BackgroundColor="#222426" 
                    BorderColor="WhiteSmoke"
                    HeightRequest="100" 
                    WidthRequest="100" 
@@ -43,11 +43,15 @@
                        HorizontalTextAlignment="Center" 
                        VerticalTextAlignment="Center" />
             </Frame>
-            <Frame BackgroundColor="SlateGray" 
+            <Frame BackgroundColor="#222426" 
                    BorderColor="WhiteSmoke"
                    HeightRequest="100" 
                    WidthRequest="100" 
                    Grid.Row="2" >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Doctrine_Tapped"
+                                          NumberOfTapsRequired="1" />
+                </Frame.GestureRecognizers>
                 <Label Text="Doctrine" 
                    FontSize="35" 
                    FontAttributes="Bold" 

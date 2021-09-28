@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:vm="clr-namespace:BibleContext.ViewModels"
-             x:Class="BibleContext.Views.VersesPage">
+             x:Class="BibleContext.Views.VersesPage"
+             BackgroundColor="Black">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -24,7 +25,7 @@
                     <Frame BackgroundColor="Black"
                            BorderColor="Black">
                         <Label Text="{Binding}" 
-                               FontSize="Medium"
+                               FontSize="Large"
                                TextColor="White"
                                FontAttributes="Bold" 
                                HorizontalTextAlignment="Center" 

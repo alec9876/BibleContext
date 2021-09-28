@@ -16,6 +16,13 @@ namespace BibleContext.Views
             (Resources["vm"] as SectionChapterVM).BookTitle = selectedBook.BookName;
         }
 
+        public SectionChapterPage(NewTestBooks selectedBook)
+        {
+            InitializeComponent();
+            (Resources["vm"] as SectionChapterVM).SelectedBookNT = selectedBook;
+            (Resources["vm"] as SectionChapterVM).BookTitle = selectedBook.BookName;
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

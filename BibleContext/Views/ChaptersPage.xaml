@@ -17,7 +17,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
-            <Frame BackgroundColor="SlateGray">
+            <Frame BackgroundColor="#222426">
                 <Image HorizontalOptions="Start">
                     <Image.Source>
                         <FontImageSource FontFamily="FAS"
@@ -53,11 +53,12 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
-                            <Frame BackgroundColor="SlateGray"
-                                   BorderColor="WhiteSmoke">
+                            <Frame BackgroundColor="#222426"
+                                   BorderColor="WhiteSmoke"
+                                   CornerRadius="20">
                                 <StackLayout>
                                     <Label Text="{Binding Chapter}" 
-                                           FontSize="40"
+                                           FontSize="35"
                                            TextColor="WhiteSmoke"
                                            VerticalTextAlignment="Center"
                                            HorizontalTextAlignment="Center" />

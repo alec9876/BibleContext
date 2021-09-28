@@ -1,12 +1,167 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BibleContext.Views.DoctrinePage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             xmlns:vm="clr-namespace:BibleContext.ViewModels"
+             x:Class="BibleContext.Views.DoctrinePage"
+             BackgroundColor="Black">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding Source={StaticResource vm}, Path=BackNavigationCommand}" />
+    </Shell.BackButtonBehavior>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:DoctrineVM x:Key="vm" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Shell.TitleView>
+        <Label Text="Doctrine Selection" 
+               TextColor="WhiteSmoke"
+               FontAttributes="Bold"
+               VerticalTextAlignment="Center"
+               HorizontalOptions="Center"
+               FontSize="Medium"/>
+    </Shell.TitleView>
+
+    <Grid Margin="50" RowSpacing="20" ColumnSpacing="20" BackgroundColor="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Frame BackgroundColor="#222426"
+               BorderColor="WhiteSmoke"
+               CornerRadius="20"
+               HeightRequest="100" 
+               WidthRequest="100" 
+               Grid.Row="0" 
+               Grid.Column="0">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Source={StaticResource vm}, Path=OldTestBooksCommand}" 
+                                      NumberOfTapsRequired="1" />
+            </Frame.GestureRecognizers>
+            <Label Text="The Bible" 
+                   FontSize="Medium" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center" 
+                   TextColor="WhiteSmoke"/>
+        </Frame>
+        <Frame BackgroundColor="#222426"
+               BorderColor="WhiteSmoke"
+               CornerRadius="20"
+               HeightRequest="100" 
+               WidthRequest="100" 
+               Grid.Row="0"
+               Grid.Column="1">
+            <Label Text="Salvation" 
+                   FontSize="Medium" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center" 
+                   TextColor="WhiteSmoke"/>
+        </Frame>
+        <Frame BackgroundColor="#222426"
+               BorderColor="WhiteSmoke"
+               CornerRadius="20"
+               HeightRequest="100" 
+               WidthRequest="100" 
+               Grid.Row="1" 
+               Grid.Column="0">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Source={StaticResource vm}, Path=OldTestBooksCommand}" 
+                                      NumberOfTapsRequired="1" />
+            </Frame.GestureRecognizers>
+            <Label Text="God" 
+                   FontSize="Medium" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center" 
+                   TextColor="WhiteSmoke"/>
+        </Frame>
+        <Frame BackgroundColor="#222426"
+               BorderColor="WhiteSmoke"
+               CornerRadius="20"
+               HeightRequest="100" 
+               WidthRequest="100" 
+               Grid.Row="1"
+               Grid.Column="1">
+            <Label Text="The Church" 
+                   FontSize="Medium" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center" 
+                   TextColor="WhiteSmoke"/>
+        </Frame>
+        <Frame BackgroundColor="#222426"
+               BorderColor="WhiteSmoke"
+               CornerRadius="20"
+               HeightRequest="100" 
+               WidthRequest="100" 
+               Grid.Row="2" 
+               Grid.Column="0">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Source={StaticResource vm}, Path=OldTestBooksCommand}" 
+                                      NumberOfTapsRequired="1" />
+            </Frame.GestureRecognizers>
+            <Label Text="Creation &amp; Man"
+                   FontSize="Medium" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center" 
+                   TextColor="WhiteSmoke"/>
+        </Frame>
+        <Frame BackgroundColor="#222426"
+               BorderColor="WhiteSmoke"
+               CornerRadius="20"
+               HeightRequest="100" 
+               WidthRequest="100" 
+               Grid.Row="2"
+               Grid.Column="1">
+            <Label Text="Angels" 
+                   FontSize="Medium" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center" 
+                   TextColor="WhiteSmoke"/>
+        </Frame>
+        <Frame BackgroundColor="#222426"
+               BorderColor="WhiteSmoke"
+               CornerRadius="20"
+               HeightRequest="100" 
+               WidthRequest="100" 
+               Grid.Row="3" 
+               Grid.Column="0">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Source={StaticResource vm}, Path=OldTestBooksCommand}" 
+                                      NumberOfTapsRequired="1" />
+            </Frame.GestureRecognizers>
+            <Label Text="Sin" 
+                   FontSize="Medium" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center" 
+                   TextColor="WhiteSmoke"/>
+        </Frame>
+        <Frame BackgroundColor="#222426"
+               BorderColor="WhiteSmoke"
+               CornerRadius="20"
+               HeightRequest="100" 
+               WidthRequest="100" 
+               Grid.Row="3"
+               Grid.Column="1">
+            <Label Text="The Future" 
+                   FontSize="Medium" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center" 
+                   TextColor="WhiteSmoke"/>
+        </Frame>
+    </Grid>
 </ContentPage>

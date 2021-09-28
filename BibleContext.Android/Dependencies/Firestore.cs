@@ -21,17 +21,19 @@ namespace BibleContext.Droid.Dependencies
 {
     public class Firestore : Java.Lang.Object, IFirestore, IOnCompleteListener
     {
+        List<SubSection> subSections;
         List<Section> sections;
         List<Chapters> chapters;
         List<OldTestBooks> oldTestBooks;
-        OldTestBooks oldTestBook;
+        List<NewTestBooks> newTestBooks;
         bool success = false;
         public Firestore()
         {
             oldTestBooks = new List<OldTestBooks>();
+            newTestBooks = new List<NewTestBooks>();
             sections = new List<Section>();
+            subSections = new List<SubSection>();
             chapters = new List<Chapters>();
-            oldTestBook = new OldTestBooks();
         }
 
 
@@ -39,81 +41,118 @@ namespace BibleContext.Droid.Dependencies
         {
             if(task.IsSuccessful)
             {
-                if (task.Result is DocumentSnapshot)
+                var documents = (QuerySnapshot)task.Result;
+                var getDoc = documents.Documents.FirstOrDefault();
+                if (getDoc == null)
                 {
-                    var newBook = Mapping.OldTestBookMapping(task);
-
-                    oldTestBook = newBook;
+                    success = true;
+                    subSections = new List<SubSection>();
+                    return;
                 }
-                else
+                var checkDoc = getDoc.Reference.Parent.Id;
+
+                if (checkDoc == "OldTestamentBooks")
                 {
-                    var documents = (QuerySnapshot)task.Result;
-                    var getDoc = documents.Documents.FirstOrDefault();
-                    var checkDoc = getDoc.Reference.Parent.Id;
-
-                    if (checkDoc == "OldTestamentBooks")
+                    oldTestBooks.Clear();
+                    foreach (var doc in documents.Documents)
                     {
-                        oldTestBooks.Clear();
-                        foreach (var doc in documents.Documents)
+                        OldTestBooks newOldTestBooks = new OldTestBooks()
                         {
-                            OldTestBooks newOldTestBooks = new OldTestBooks()
-                            {
-                                BookName = doc.Get("BookName").ToString(),
-                                Abbreviation = doc.Get("Abbreviation").ToString(),
-                                BackgroundColor = doc.Get("BackgroundColor").ToString(),
-                                Order = (int)doc.Get("Order"),
-                                Genre = doc.Get("Genre").ToString(),
-                                Id = doc.Id
-                            };
+                            BookName = doc.Get("BookName").ToString(),
+                            Abbreviation = doc.Get("Abbreviation").ToString(),
+                            BackgroundColor = doc.Get("BackgroundColor").ToString(),
+                            Order = (int)doc.Get("Order"),
+                            Genre = doc.Get("Genre").ToString(),
+                            Id = doc.Id
+                        };
 
-                            oldTestBooks.Add(newOldTestBooks);
-                        }
+                        oldTestBooks.Add(newOldTestBooks);
                     }
-                    if (checkDoc == "Sections")
+                }
+                if(checkDoc == "NewTestamentBooks")
+                {
+                    newTestBooks.Clear();
+                    foreach (var doc in documents.Documents)
                     {
-                        sections.Clear();
-                        foreach (var doc in documents.Documents)
+                        NewTestBooks newNewTestBooks = new NewTestBooks()
                         {
-                            Section newSections = new Section()
-                            {
-                                Title = doc.Get("Title").ToString(),
-                                Verses = doc.Get("Verses").ToString(),
-                                Order = (int)doc.Get("Order"),
-                                BackgroundColor = doc.Get("BackgroundColor").ToString(),
-                                Id = doc.Id
-                            };
+                            BookName = doc.Get("BookName").ToString(),
+                            Abbreviation = doc.Get("Abbreviation").ToString(),
+                            BackgroundColor = doc.Get("BackgroundColor").ToString(),
+                            Order = (int)doc.Get("Order"),
+                            Genre = doc.Get("Genre").ToString(),
+                            Id = doc.Id
+                        };
 
-                            sections.Add(newSections);
-                        }
+                        newTestBooks.Add(newNewTestBooks);
                     }
-                    if (checkDoc == "Chapters")
-                    {
-                        chapters.Clear();
-                        foreach (var doc in documents.Documents)
-                        {
-                            Chapters newChapters = new Chapters()
-                            {
-                                Chapter = doc.Get("Chapter").ToString(),
-                                Order = (int)doc.Get("Order"),
-                                Id = doc.Id
-                            };
 
-                            chapters.Add(newChapters);
-                        }
+                }
+                if (checkDoc == "Sections")
+                {
+                    sections.Clear();
+                    foreach (var doc in documents.Documents)
+                    {
+                        Section newSections = new Section()
+                        {
+                            Title = doc.Get("Title").ToString(),
+                            Verses = doc.Get("Verses").ToString(),
+                            Order = (int)doc.Get("Order"),
+                            BackgroundColor = doc.Get("BackgroundColor").ToString(),
+                            Id = doc.Id,
+                            HasSubsections = (bool)doc.Get("HasSubsections"),
+                            SubSectionCount = (int)doc.Get("SubSectionCount")
+                        };
+
+                        sections.Add(newSections);
+                    }
+                }
+                if (checkDoc == "SubSections")
+                {
+                    subSections.Clear();
+                    foreach (var doc in documents.Documents)
+                    {
+                        SubSection newSubSections = new SubSection()
+                        {
+                            Title = doc.Get("Title").ToString(),
+                            Verses = doc.Get("Verses").ToString(),
+                            Order = (int)doc.Get("Order"),
+                            BackgroundColor = doc.Get("BackgroundColor").ToString(),
+                            Id = doc.Id
+                        };
+
+                        subSections.Add(newSubSections);
+                    }
+                }
+                if (checkDoc == "Chapters")
+                {
+                    chapters.Clear();
+                    foreach (var doc in documents.Documents)
+                    {
+                        Chapters newChapters = new Chapters()
+                        {
+                            Chapter = doc.Get("Chapter").ToString(),
+                            Order = (int)doc.Get("Order"),
+                            Id = doc.Id
+                        };
+
+                        chapters.Add(newChapters);
                     }
                 }
             }
             else
             {
                 oldTestBooks.Clear();
+                newTestBooks.Clear();
                 sections.Clear();
+                subSections.Clear();
                 chapters.Clear();
             }
 
             success = true;
         }
 
-        public async Task<List<OldTestBooks>> Read()
+        public async Task<List<OldTestBooks>> ReadOT()
         {
             try
             {
@@ -125,7 +164,7 @@ namespace BibleContext.Droid.Dependencies
                 #region for loop
                 for (int i = 0; i < 40; i++)
                 {
-                    await System.Threading.Tasks.Task.Delay(100);
+                    await System.Threading.Tasks.Task.Delay(0);
                     if (success)
                         break;
                 }
@@ -141,32 +180,36 @@ namespace BibleContext.Droid.Dependencies
             }
         }
 
-        public async Task<OldTestBooks> GetBook(string id)
+        public async Task<List<NewTestBooks>> ReadNT()
         {
             try
             {
                 success = false;
-                var collection = FirebaseFirestore.Instance
-                    .Collection("Sections").Document(id);
-                collection.Get().AddOnCompleteListener(this);
+                var collection = FirebaseFirestore.Instance.Collection("NewTestamentBooks");
+                var query = collection.OrderBy("Order", Query.Direction.Ascending);
+                query.Get().AddOnCompleteListener(this);
 
+                #region for loop
                 for (int i = 0; i < 40; i++)
                 {
                     await System.Threading.Tasks.Task.Delay(100);
                     if (success)
                         break;
                 }
+                #endregion 
 
-                return oldTestBook;
+                //await System.Threading.Tasks.Task.Delay(1000);
 
+                return newTestBooks;
             }
             catch (Exception)
             {
-                return oldTestBook;
+                return newTestBooks;
             }
         }
 
-        public async Task<List<Section>> GetSections(string id)
+
+        public async Task<List<Section>> GetSectionsOT(string id)
         {
             try
             {
@@ -188,6 +231,56 @@ namespace BibleContext.Droid.Dependencies
             catch (Exception)
             {
                 return sections;
+            }
+        }
+
+        public async Task<List<Section>> GetSectionsNT(string id)
+        {
+            try
+            {
+                success = false;
+                var collection = FirebaseFirestore.Instance
+                    .Collection("NewTestamentBooks").Document(id).Collection("Sections");
+                var query = collection.OrderBy("Order", Query.Direction.Ascending);
+                query.Get().AddOnCompleteListener(this);
+
+                for (int i = 0; i < 40; i++)
+                {
+                    await System.Threading.Tasks.Task.Delay(100);
+                    if (success)
+                        break;
+                }
+
+                return sections;
+            }
+            catch (Exception)
+            {
+                return sections;
+            }
+        }
+
+        public async Task<List<SubSection>> GetSubSectionsNT(string bookId, string sectionId)
+        {
+            try
+            {
+                success = false;
+                var collection = FirebaseFirestore.Instance
+                    .Collection("NewTestamentBooks").Document(bookId).Collection("Sections").Document(sectionId).Collection("SubSections");
+                var query = collection.OrderBy("Order", Query.Direction.Ascending);
+                query.Get().AddOnCompleteListener(this);
+
+                for (int i = 0; i < 40; i++)
+                {
+                    await System.Threading.Tasks.Task.Delay(100);
+                    if (success)
+                        break;
+                }
+
+                return subSections;
+            }
+            catch (Exception)
+            {
+                return subSections;
             }
         }
 
@@ -220,7 +313,7 @@ namespace BibleContext.Droid.Dependencies
         {
             try
             {
-                for (int i = 1; i < 4; i++)
+                for (int i = 1; i < 10; i++)
                 {
                     var postDocument = new Dictionary<string, Java.Lang.Object>
                     {
@@ -229,7 +322,7 @@ namespace BibleContext.Droid.Dependencies
                     };
 
                     var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("OldTestamentBooks")
-                        .Document("v67oOkEd6J1BI7x4AEEH")
+                        .Document("4l3tOIrUaakxZZoVjxIA")
                         .Collection("Chapters");
                     collection.Add(new Java.Util.HashMap(postDocument));
 
@@ -244,5 +337,9 @@ namespace BibleContext.Droid.Dependencies
             }
         }
 
+        public Task<OldTestBooks> GetBook(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

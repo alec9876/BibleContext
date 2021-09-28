@@ -31,7 +31,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" />
-        <Frame BackgroundColor="SlateGray"
+        <Frame BackgroundColor="#222426"
                BorderColor="WhiteSmoke"
                HeightRequest="100" 
                WidthRequest="100" 
@@ -48,13 +48,17 @@
                    VerticalTextAlignment="Center" 
                    TextColor="WhiteSmoke"/>
         </Frame>
-        <Frame BackgroundColor="SlateGray"
+        <Frame BackgroundColor="#222426"
                BorderColor="WhiteSmoke"
                HeightRequest="100" 
                WidthRequest="100" 
                Grid.Row="2" 
                Margin="0,50,0,0"
                VerticalOptions="Center">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Source={StaticResource vm}, Path=NewTestBooksCommand}" 
+                                      NumberOfTapsRequired="1" />
+            </Frame.GestureRecognizers>
             <Label Text="New Testament" 
                    FontSize="Large" 
                    FontAttributes="Bold" 

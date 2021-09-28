@@ -57,7 +57,7 @@ namespace BibleContext.ViewModels
 
         private async void BackNavigation()
         {
-            await Shell.Current.GoToAsync($"home");
+            await Shell.Current.GoToAsync($"testament");
         }
 
         private async void LegendNavigation()
@@ -67,7 +67,7 @@ namespace BibleContext.ViewModels
 
         public async void GetBooks()
         {
-            var books = await Firestore.Read();
+            var books = await Firestore.ReadOT();
             AllOldTestBooks.ReplaceRange(books);
             FilterItems();
             OldTestBooks.Clear();

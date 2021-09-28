@@ -20,7 +20,12 @@ namespace BibleContext.Views
 
         private async void Bible_Tapped(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync($"//intro/home");
+            await Shell.Current.GoToAsync($"//intro/testament");
+        }
+
+        private async void Doctrine_Tapped(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync($"//intro/doctrine");
         }
 
         private void Data_Clicked(object sender, EventArgs e)

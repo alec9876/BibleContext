@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BibleContext.ViewModels"
+             x:Class="BibleContext.Views.NewTestBooksPage"
+             Shell.NavBarIsVisible="True"
+             BackgroundColor="Black">
+    
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding Source={StaticResource vm}, Path=BackNavigationCommand}" />
+    </Shell.BackButtonBehavior>
+
+    <Shell.TitleView>
+        <Label Text="New Testament" 
+               TextColor="WhiteSmoke"
+               FontAttributes="Bold"
+               VerticalTextAlignment="Center"
+               HorizontalOptions="Center"
+               FontSize="Medium"/>
+    </Shell.TitleView>
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:NewTestamentVM x:Key="vm" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <Button Command="{Binding Source={StaticResource vm}, Path=LegendNavigationCommand}"
+                Text="Color Legend"
+                TextColor="ForestGreen"
+                HorizontalOptions="Center"
+                BorderColor="ForestGreen"
+                BorderWidth="5"
+                CornerRadius="12"
+                BackgroundColor="Black"
+                Margin="0,5,0,0"/>
+
+        <CollectionView BindingContext="{StaticResource vm}"
+                    ItemsSource="{Binding NewTestBooks}"
+                    SelectedItem="{Binding SelectedBook}"
+                    SelectionMode="Single"
+                    ItemsLayout="VerticalGrid, 3">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame BackgroundColor="{Binding BackgroundColor}"
+                           BorderColor="Black">
+                            <Label Text="{Binding Abbreviation}" FontSize="Medium"
+                                    TextColor="White"
+                                   FontAttributes="Bold" 
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

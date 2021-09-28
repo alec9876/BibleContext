@@ -31,7 +31,7 @@ namespace BibleContext.Models
                 //await Task.Delay(5000);
                 if (response.IsSuccessStatusCode)
                 {
-                var json = await response.Content.ReadAsStringAsync();
+                    var json = await response.Content.ReadAsStringAsync();
                     var verseRoot = JsonConvert.DeserializeObject<Root>(json);
                     Console.WriteLine(verseRoot);
                     scripture = verseRoot;

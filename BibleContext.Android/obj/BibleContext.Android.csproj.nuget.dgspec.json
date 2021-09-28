@@ -136,6 +136,10 @@
               "target": "Package",
               "version": "[1.6.2, )"
             },
+            "Xamarin.CommunityToolkit": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.6.1, )"

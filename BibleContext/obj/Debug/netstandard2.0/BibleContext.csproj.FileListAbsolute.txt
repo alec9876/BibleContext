@@ -6,14 +6,16 @@ C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandar
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\Views\ChaptersPage.xaml.g.cs
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\Views\DoctrinePage.xaml.g.cs
-C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\Views\HomePage.xaml.g.cs
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\Views\IntroPage.xaml.g.cs
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\Views\MenuHeader.xaml.g.cs
+C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\Views\NewTestBooksPage.xaml.g.cs
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\Views\OldTestBooksPage.xaml.g.cs
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\Views\OTLegendPage.xaml.g.cs
+C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\Views\OutlinePage.xaml.g.cs
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\Views\SectionChapterPage.xaml.g.cs
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\Views\SectionsPage.xaml.g.cs
+C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\Views\TestamentPage.xaml.g.cs
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\Views\VersesPage.xaml.g.cs
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\BibleContext.AssemblyInfoInputs.cache
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\BibleContext.AssemblyInfo.cs
@@ -22,4 +24,3 @@ C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandar
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\BibleContext.dll
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\ref\BibleContext.dll
 C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\BibleContext.pdb
-C:\Users\Alec Schram\source\repos\BibleContext\BibleContext\obj\Debug\netstandard2.0\BibleContext.csproj.AssemblyReference.cache
